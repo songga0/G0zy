@@ -1,0 +1,8 @@
+# Godot
+.godot/
+
+# 빌드 결과물
+/build/
+
+# macOS
+.DS_Store

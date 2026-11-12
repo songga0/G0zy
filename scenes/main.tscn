@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://14dfqsqe3pvc"]
+
+[ext_resource type="Script" uid="uid://emrw2hncb68o" path="res://scripts/debug_label.gd" id="1_debug"]
+[ext_resource type="Script" path="res://scripts/room.gd" id="2_room"]
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 1
+background_color = Color(0.86, 0.89, 0.94, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.92, 0.93, 1, 1)
+ambient_light_energy = 0.45
+
+[sub_resource type="BoxMesh" id="BoxMesh_test"]
+size = Vector3(1, 0.5, 2)
+
+[sub_resource type="StandardMaterial3D" id="Mat_box"]
+albedo_color = Color(0.96, 0.7, 0.75, 1)
+roughness = 0.9
+
+[node name="Main" type="Node3D" unique_id=1077543835]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1385243762]
+environment = SubResource("Environment_main")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1489164921]
+transform = Transform3D(0.242, -0.557, 0.795, 0, 0.819, 0.574, -0.97, -0.139, 0.198, 0, 4, 0)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 1.1
+shadow_enabled = true
+shadow_blur = 1.5
+directional_shadow_mode = 1
+directional_shadow_max_distance = 20.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1364621430]
+transform = Transform3D(0.7071, -0.5255, 0.4731, 0, 0.6691, 0.7431, -0.7071, -0.5255, 0.4731, 6.04, 9.48, 6.04)
+keep_aspect = 0
+fov = 35.0
+
+[node name="Room" type="Node3D" parent="." unique_id=599591945]
+script = ExtResource("2_room")
+
+[node name="TestBox" type="MeshInstance3D" parent="." unique_id=1798052420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.25, -0.95)
+mesh = SubResource("BoxMesh_test")
+surface_material_override/0 = SubResource("Mat_box")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1753951034]
+
+[node name="DebugLabel" type="Label" parent="UI" unique_id=520926213]
+offset_left = 12.0
+offset_top = 60.0
+offset_right = 200.0
+offset_bottom = 110.0
+script = ExtResource("1_debug")
