@@ -1,8 +1,16 @@
-# Godot
+# Godot 캐시 (에디터가 자동 생성, 서명 정보 등도 여기 저장됨)
 .godot/
 
-# 빌드 결과물
+# 빌드 결과물 (iOS 내보내기 시 생기는 Xcode 프로젝트, 앱 파일)
 /build/
+*.ipa
+*.xcarchive
+
+# 비밀 정보 (날씨 API 키 등) - 예시 파일만 커밋
+/config/secrets.json
+
+# Godot 임시 파일
+*.tmp
 
 # macOS
 .DS_Store

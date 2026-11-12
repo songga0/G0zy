@@ -27,6 +27,16 @@ func _ready() -> void:
 	walls["south"].visible = false
 
 
+
+## 바닥 판과 벽을 모두 포함하는 방의 외곽 상자. 카메라 거리 계산에 사용한다.
+func get_bounds() -> AABB:
+	var outer_w := width + wall_thickness * 2.0
+	var outer_d := depth + wall_thickness * 2.0
+	return AABB(
+		Vector3(-outer_w / 2.0, -floor_thickness, -outer_d / 2.0),
+		Vector3(outer_w, wall_height + floor_thickness, outer_d))
+
+
 func _build() -> void:
 	var floor_mat := _make_material(floor_color)
 	var wall_mat := _make_material(wall_color)
